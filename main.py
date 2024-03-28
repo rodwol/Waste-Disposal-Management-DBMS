@@ -31,12 +31,6 @@ class Route:
     def assign_truck(self, truck):
         self.truck = truck
 
-""" class WasteManagementSystem:
-    def __init__(self):
-        self.trucks = []
-        self.drivers = []
-        self.routes = [] """
-
 #Helper functions for the menu (1-4)
 def add_truck():
     plate_number = input("Enter truck's license plate number: ")
@@ -62,7 +56,7 @@ def assign_route_to_truck(self, license_plate, area):
     route = next((route for route in self.routes if route.area == area), None)
     if truck and route:
         truck.route = route
-        print(f"Route '{area}' has been assigned to truck '{license_plate}'.")
+        print("Route '{}' has been assigned to truck '{}'.".format(area, license_plate))
     else:
         print("Error: Truck or route not found.")
 
@@ -71,13 +65,44 @@ def view_trucks(self):
     for truck in self.trucks:
         driver_name = truck.driver.name if truck.driver else "No driver assigned"
         route_area = truck.route.area if truck.route else "No route assigned"
-        print(f"License Plate: {truck.license_plate}, Type: {truck.type}, Driver: {driver_name}, Route: {route_area}")
+        print("License Plate: {}, Type: {}, Driver: {}, Route: {}".format(truck.license_plate, truck.type, driver_name, route_area))
 
 def view_drivers(self):
     print("Drivers in the system:")
     for driver in self.drivers:
         truck_license = driver.truck.license_plate if driver.truck else "No truck assigned"
-        print(f"Name: {driver.name}, Phone Number: {driver.phone_number}, Truck: {truck_license}")
+        print("Name: {}, Phone Number: {}, Truck: {}".format(driver.name, driver.phone_number, truck_license))
+
+# functions for menu options 8-10
+def view_routes(routes):
+    print("Routes in the system:")
+    for route in routes:
+        truck_license = route.truck.license_plate if route.truck else "No route assigned"
+        print("Area: {}, Truck: {}".format(route.area, truck_license))
+
+def update_truck_information(trucks):
+    license_plate = input("Enter truck's license plate number: ")
+    truck = next((truck for truck in trucks if truck.license_plate == license_plate), None)
+    if truck:
+        new_driver_name = input("Enter new driver's name (leave blank to keep current): ")
+        new_route_area = input("Enter new route's area (leave blank to keep current): ")
+        if new_driver_name:
+            truck.driver.name = new_driver_name
+        if new_route_area:
+            truck.route.area = new_route_area
+        print("Truck information updated successfully!")
+    else:
+        print("Error: Truck not found.")
+
+def update_driver_information(drivers):
+    name = input("Enter driver's name: ")
+    driver = next((driver for driver in drivers if driver.name == name), None)
+    if driver:
+        new_phone_number = input("Enter new phone number: ")
+        driver.phone_number = new_phone_number
+        print("Driver information updated successfully!")
+    else:
+        print("Error: Driver not found.")
 
 #Menu Options
 def menu():
@@ -136,6 +161,15 @@ while True:
         else:
             print("Please add trucks and drivers first.")
 
+    elif choice == '8':
+        view_routes(routes)
+
+    elif choice == '9':
+        update_truck_information(trucks)
+
+    elif choice == '10':
+        update_driver_information(drivers)
+   
     elif choice == '15':
         print("Exiting...")
         break
