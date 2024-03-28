@@ -150,7 +150,7 @@ while True:
         if trucks and drivers:
             print("Available Trucks:")
             for i, truck in enumerate(trucks):
-                print(f"{i+1}. License Plate: {truck.plate_number}, Type: {truck.truck_type}")
+                print(f"{i+1}. License Plate: {truck.license_plate}, Type: {truck.type}")
             truck_index = int(input("Enter the index of the truck: ")) - 1
             print("Available Drivers:")
             for i, driver in enumerate(drivers):
