@@ -102,3 +102,43 @@ trucks = []
 drivers = []
 routes = []
 
+while True:
+    menu()
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        truck = add_truck()
+        trucks.append(truck)
+        print("Truck added successfully!")
+
+    elif choice == '2':
+        driver = add_driver()
+        drivers.append(driver)
+        print("Driver added successfully!")
+
+    elif choice == '3':
+        route = add_route()
+        routes.append(route)
+        print("Route added successfully!")
+
+    elif choice == '4':
+        if trucks and drivers:
+            print("Available Trucks:")
+            for i, truck in enumerate(trucks):
+                print(f"{i+1}. License Plate: {truck.plate_number}, Type: {truck.truck_type}")
+            truck_index = int(input("Enter the index of the truck: ")) - 1
+            print("Available Drivers:")
+            for i, driver in enumerate(drivers):
+                print(f"{i+1}. Name: {driver.name}, Phone Number: {driver.phone_number}")
+            driver_index = int(input("Enter the index of the driver: ")) - 1
+            assign_driver_to_truck(trucks[truck_index], drivers[driver_index])
+            print("Driver assigned to truck successfully!")
+        else:
+            print("Please add trucks and drivers first.")
+
+    elif choice == '15':
+        print("Exiting...")
+        break
+    
+    else:
+        print("Invalid choice. Please try again.")
