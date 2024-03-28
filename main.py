@@ -37,6 +37,24 @@ class WasteManagementSystem:
         self.drivers = []
         self.routes = []
 
+def menu():
+    print("\nWaste Disposal Management System")
+    print("1. Add a Truck")
+    print("2. Add a Driver")
+    print("3. Add a Route")
+    print("4. Assign a Driver to a Truck")
+    print("5. Assign a Route to a Truck")
+    print("6. View Trucks")
+    print("7. View Drivers")
+    print("8. View Routes")
+    print("9. Update Truck Information")
+    print("10. Update Driver Information")
+    print("11. Delete Truck")
+    print("12. Delete Driver")
+    print("13. Delete Route")
+    print("14. Generate report on the list of routes assigned to each truck")
+    print("15. Exit")
+
 # Continuing from the existing WasteManagementSystem class... (menu 5 to 7)
     def assign_route_to_truck(self, license_plate, area):
         truck = next((truck for truck in self.trucks if truck.license_plate == license_plate), None)
