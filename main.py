@@ -31,29 +31,30 @@ class Route:
     def assign_truck(self, truck):
         self.truck = truck
 
-class WasteManagementSystem:
+""" class WasteManagementSystem:
     def __init__(self):
         self.trucks = []
         self.drivers = []
-        self.routes = []
+        self.routes = [] """
 
-def menu():
-    print("\nWaste Disposal Management System")
-    print("1. Add a Truck")
-    print("2. Add a Driver")
-    print("3. Add a Route")
-    print("4. Assign a Driver to a Truck")
-    print("5. Assign a Route to a Truck")
-    print("6. View Trucks")
-    print("7. View Drivers")
-    print("8. View Routes")
-    print("9. Update Truck Information")
-    print("10. Update Driver Information")
-    print("11. Delete Truck")
-    print("12. Delete Driver")
-    print("13. Delete Route")
-    print("14. Generate report on the list of routes assigned to each truck")
-    print("15. Exit")
+#Helper functions for the menu (1-4)
+def add_truck():
+    plate_number = input("Enter truck's license plate number: ")
+    truck_type = input("Enter truck's type (e.g., recycling, garbage): ")
+    return Truck(plate_number, truck_type)
+
+def add_driver():
+    name = input("Enter driver's name: ")
+    phone_number = input("Enter driver's phone number: ")
+    return Driver(name, phone_number)
+
+def add_route():
+    area = input("Enter route's area: ")
+    return Route(area)
+
+def assign_driver_to_truck(truck, driver):
+    truck.assign_driver(driver)
+    driver.assign_truck(truck)
 
 # Continuing from the existing WasteManagementSystem class... (menu 5 to 7)
     def assign_route_to_truck(self, license_plate, area):
@@ -77,4 +78,27 @@ def menu():
         for driver in self.drivers:
             truck_license = driver.truck.license_plate if driver.truck else "No truck assigned"
             print(f"Name: {driver.name}, Phone Number: {driver.phone_number}, Truck: {truck_license}")
+
+#Menu Options
+def menu():
+    print("\nWaste Disposal Management System")
+    print("1. Add a Truck")
+    print("2. Add a Driver")
+    print("3. Add a Route")
+    print("4. Assign a Driver to a Truck")
+    print("5. Assign a Route to a Truck")
+    print("6. View Trucks")
+    print("7. View Drivers")
+    print("8. View Routes")
+    print("9. Update Truck Information")
+    print("10. Update Driver Information")
+    print("11. Delete Truck")
+    print("12. Delete Driver")
+    print("13. Delete Route")
+    print("14. Generate report on the list of routes assigned to each truck")
+    print("15. Exit")
+
+trucks = []
+drivers = []
+routes = []
 
