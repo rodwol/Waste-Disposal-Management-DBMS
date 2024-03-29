@@ -50,28 +50,27 @@ def assign_driver_to_truck(truck, driver):
     truck.assign_driver(driver)
     driver.assign_truck(truck)
 
-# Continuing from the existing WasteManagementSystem class... (menu 5 to 7)
-def assign_route_to_truck(self, license_plate, area):
-    truck = next((truck for truck in self.trucks if truck.license_plate == license_plate), None)
-    route = next((route for route in self.routes if route.area == area), None)
-    if truck and route:
-        truck.route = route
-        print("Route '{}' has been assigned to truck '{}'.".format(area, license_plate))
+
+# functions for menus 5 to 7
+
+def assign_route_to_truck():
+    plate_number = input("Enter truck's license plate number for route assignment: ")
+    area = input("Enter route's area for the truck: ")
+    
+    # Search the truck and route if they are available in the system
+    truck = next((truck for truck in trucks if truck.license_plate == plate_number), None)
+    route = next((route for route in routes if route.area == area), None)
+
+    if truck is not None and route is not None:
+        truck.assign_route(route)
+        route.assign_truck(truck)
+        print("Route assigned successfully.")
     else:
-        print("Error: Truck or route not found.")
+        print("Truck or Route not found.")
 
-def view_trucks(self):
-    print("Trucks in the system:")
-    for truck in self.trucks:
-        driver_name = truck.driver.name if truck.driver else "No driver assigned"
-        route_area = truck.route.area if truck.route else "No route assigned"
-        print("License Plate: {}, Type: {}, Driver: {}, Route: {}".format(truck.license_plate, truck.type, driver_name, route_area))
 
-def view_drivers(self):
-    print("Drivers in the system:")
-    for driver in self.drivers:
-        truck_license = driver.truck.license_plate if driver.truck else "No truck assigned"
-        print("Name: {}, Phone Number: {}, Truck: {}".format(driver.name, driver.phone_number, truck_license))
+
+
 
 # functions for menu options 8-10
 def view_routes(routes):
