@@ -1,6 +1,6 @@
 # Phase-3-CLI-Project
 
-# Waste Disposal Management DBMS oversees the smooth running of a waste disposal management company, 09/06/2023
+# Waste Disposal Management DBMS oversees the smooth running of a waste disposal management company.
 
 #### By **Tamunotonye Briggs, Rodas Goniche, Manzi Terry, Aimée Gloire Imaragahinda, Lassy Gakuba.**
 
