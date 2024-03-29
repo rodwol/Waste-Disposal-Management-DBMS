@@ -84,12 +84,21 @@ def update_truck_information(trucks):
     license_plate = input("Enter truck's license plate number: ")
     truck = next((truck for truck in trucks if truck.license_plate == license_plate), None)
     if truck:
-        new_driver_name = input("Enter new driver's name (leave blank to keep current): ")
-        new_route_area = input("Enter new route's area (leave blank to keep current): ")
-        if new_driver_name:
+        new_driver_name = input("Enter new driver's name: ")
+        new_route_area = input("Enter new route's area: ")
+
+        # Check if the truck has a driver assigned
+        if truck.driver:
             truck.driver.name = new_driver_name
-        if new_route_area:
+        else:
+            print("Error: No driver assigned to the truck.")
+
+        # Check if the truck has a route assigned
+        if truck.route:
             truck.route.area = new_route_area
+        else:
+            print("Error: No route assigned to the truck.")
+
         print("Truck information updated successfully!")
     else:
         print("Error: Truck not found.")
