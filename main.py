@@ -51,7 +51,7 @@ def assign_driver_to_truck(truck, driver):
     driver.assign_truck(truck)
 
 
-# functions for menus 5 to 7
+# functions for menu 5 to 7!
 
 def assign_route_to_truck():
     plate_number = input("Enter truck's license plate number for route assignment: ")
@@ -68,6 +68,13 @@ def assign_route_to_truck():
     else:
         print("Truck or Route not found.")
 
+
+def view_trucks():
+    if not trucks:
+        print("No trucks registered.")
+        return
+    for truck in trucks:
+        print(f"License Plate: {truck.license_plate}, Type: {truck.type}, Driver: {(truck.driver.name if truck.driver else 'None')}, Route: {(truck.route.area if truck.route else 'None')}")
 
 
 
