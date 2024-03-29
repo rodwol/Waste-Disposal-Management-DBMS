@@ -53,6 +53,11 @@ def assign_driver_to_truck(truck, driver):
 
 # functions for menu 5 to 7!
 
+# Global lists to store trucks, drivers, and routes
+trucks = []
+drivers = []
+routes = []
+
 def assign_route_to_truck():
     plate_number = input("Enter truck's license plate number for route assignment: ")
     area = input("Enter route's area for the truck: ")
