@@ -204,6 +204,15 @@ while True:
         else:
             print("Please add trucks and drivers first.")
 
+    elif choice == '5':
+        assign_route_to_truck()
+    
+    elif choice == '6':
+        view_trucks()
+
+    elif choice == '7':
+        view_drivers()
+
     elif choice == '8':
         view_routes(routes)
 
