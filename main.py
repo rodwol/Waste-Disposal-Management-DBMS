@@ -68,7 +68,6 @@ def assign_route_to_truck():
     else:
         print("Truck or Route not found.")
 
-
 def view_trucks():
     if not trucks:
         print("No trucks registered.")
@@ -76,7 +75,12 @@ def view_trucks():
     for truck in trucks:
         print(f"License Plate: {truck.license_plate}, Type: {truck.type}, Driver: {(truck.driver.name if truck.driver else 'None')}, Route: {(truck.route.area if truck.route else 'None')}")
 
-
+def view_drivers():
+    if not drivers:
+        print("No drivers registered.")
+        return
+    for driver in drivers:
+        print(f"Name: {driver.name}, Phone Number: {driver.phone_number}, Truck: {(driver.truck.license_plate if driver.truck else 'None')}")
 
 
 # functions for menu options 8-10
