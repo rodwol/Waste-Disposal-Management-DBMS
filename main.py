@@ -234,6 +234,9 @@ while True:
     elif choice == '11':
         delete_truck(trucks)
 
+    elif choice == '12':
+        delete_driver(drivers)
+
     elif choice == '15':
         print("Exiting...")
         break
