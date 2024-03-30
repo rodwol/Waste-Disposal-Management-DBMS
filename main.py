@@ -197,15 +197,6 @@ while True:
 
     elif choice == '10':
         update_driver_information(drivers)
- 
-    elif choice == '11':
-        delete_truck(trucks)
-
-    elif choice == '12':
-        delete_driver(drivers)
-
-    elif choice == '13':
-        delete_route(routes)
    
     elif choice == '15':
         print("Exiting...")
