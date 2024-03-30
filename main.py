@@ -237,6 +237,9 @@ while True:
     elif choice == '12':
         delete_driver(drivers)
 
+    elif choice == '13':
+        delete_route(routes)
+
     elif choice == '15':
         print("Exiting...")
         break
