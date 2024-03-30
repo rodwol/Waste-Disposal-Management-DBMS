@@ -231,12 +231,9 @@ while True:
     elif choice == '10':
         update_driver_information(drivers)
 
- menu()
-    choice = input("Enter your choice: ")
+    elif choice == '11':
+        delete_truck(trucks)
 
-    if choice in menu_options:
-        menu_options[choice](trucks, drivers, routes)
-   
     elif choice == '15':
         print("Exiting...")
         break
