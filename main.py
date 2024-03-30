@@ -50,28 +50,43 @@ def assign_driver_to_truck(truck, driver):
     truck.assign_driver(driver)
     driver.assign_truck(truck)
 
-# Continuing from the existing WasteManagementSystem class... (menu 5 to 7)
-def assign_route_to_truck(self, license_plate, area):
-    truck = next((truck for truck in self.trucks if truck.license_plate == license_plate), None)
-    route = next((route for route in self.routes if route.area == area), None)
-    if truck and route:
-        truck.route = route
-        print("Route '{}' has been assigned to truck '{}'.".format(area, license_plate))
+
+# functions for menu 5 to 7!
+
+# Global lists to store trucks, drivers, and routes
+trucks = []
+drivers = []
+routes = []
+
+def assign_route_to_truck():
+    plate_number = input("Enter truck's license plate number for route assignment: ")
+    area = input("Enter route's area for the truck: ")
+    
+    # Search the truck and route if they are available in the system
+    truck = next((truck for truck in trucks if truck.license_plate == plate_number), None)
+    route = next((route for route in routes if route.area == area), None)
+
+    if truck is not None and route is not None:
+        truck.assign_route(route)
+        route.assign_truck(truck)
+        print("Route assigned successfully.")
     else:
-        print("Error: Truck or route not found.")
+        print("Truck or Route not found.")
 
-def view_trucks(self):
-    print("Trucks in the system:")
-    for truck in self.trucks:
-        driver_name = truck.driver.name if truck.driver else "No driver assigned"
-        route_area = truck.route.area if truck.route else "No route assigned"
-        print("License Plate: {}, Type: {}, Driver: {}, Route: {}".format(truck.license_plate, truck.type, driver_name, route_area))
+def view_trucks():
+    if not trucks:
+        print("No trucks registered.")
+        return
+    for truck in trucks:
+        print(f"License Plate: {truck.license_plate}, Type: {truck.type}, Driver: {(truck.driver.name if truck.driver else 'None')}, Route: {(truck.route.area if truck.route else 'None')}")
 
-def view_drivers(self):
-    print("Drivers in the system:")
-    for driver in self.drivers:
-        truck_license = driver.truck.license_plate if driver.truck else "No truck assigned"
-        print("Name: {}, Phone Number: {}, Truck: {}".format(driver.name, driver.phone_number, truck_license))
+def view_drivers():
+    if not drivers:
+        print("No drivers registered.")
+        return
+    for driver in drivers:
+        print(f"Name: {driver.name}, Phone Number: {driver.phone_number}, Truck: {(driver.truck.license_plate if driver.truck else 'None')}")
+
 
 # functions for menu options 8-10
 def view_routes(routes):
@@ -84,12 +99,21 @@ def update_truck_information(trucks):
     license_plate = input("Enter truck's license plate number: ")
     truck = next((truck for truck in trucks if truck.license_plate == license_plate), None)
     if truck:
-        new_driver_name = input("Enter new driver's name (leave blank to keep current): ")
-        new_route_area = input("Enter new route's area (leave blank to keep current): ")
-        if new_driver_name:
+        new_driver_name = input("Enter new driver's name: ")
+        new_route_area = input("Enter new route's area: ")
+
+        # Check if the truck has a driver assigned
+        if truck.driver:
             truck.driver.name = new_driver_name
-        if new_route_area:
+        else:
+            print("Error: No driver assigned to the truck.")
+
+        # Check if the truck has a route assigned
+        if truck.route:
             truck.route.area = new_route_area
+        else:
+            print("Error: No route assigned to the truck.")
+
         print("Truck information updated successfully!")
     else:
         print("Error: Truck not found.")
@@ -188,6 +212,15 @@ while True:
             print("Driver assigned to truck successfully!")
         else:
             print("Please add trucks and drivers first.")
+
+    elif choice == '5':
+        assign_route_to_truck()
+    
+    elif choice == '6':
+        view_trucks()
+
+    elif choice == '7':
+        view_drivers()
 
     elif choice == '8':
         view_routes(routes)
