@@ -256,7 +256,7 @@ while True:
         delete_route(routes)
 
     elif choice == '15':
-        print("Exiting...")
+        print("\033[31mExiting...\033[0m")
         break
-else:
-    print("Invalid choice. Please try again.")
+    else:
+        print("Invalid choice. Please try again.")
