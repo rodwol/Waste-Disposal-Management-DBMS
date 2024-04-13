@@ -167,22 +167,28 @@ def delete_route(routes):
 
 #Menu Options
 def menu():
-    print("\nWaste Disposal Management System")
-    print("1. Add a Truck")
-    print("2. Add a Driver")
-    print("3. Add a Route")
-    print("4. Assign a Driver to a Truck")
-    print("5. Assign a Route to a Truck")
-    print("6. View Trucks")
-    print("7. View Drivers")
-    print("8. View Routes")
-    print("9. Update Truck Information")
-    print("10. Update Driver Information")
-    print("11. Delete Truck")
-    print("12. Delete Driver")
-    print("13. Delete Route")
-    print("14. Generate report on the list of routes assigned to each truck")
-    print("15. Exit")
+    print("\n╔══════════════════════════════╗")
+    print("║  Waste Disposal Management   ║")
+    print("║           System             ║")
+    print("╠══════════════════════════════╣")
+    print("║ 1. Add a Truck               ║")
+    print("║ 2. Add a Driver              ║")
+    print("║ 3. Add a Route               ║")
+    print("║ 4. Assign a Driver to a Truck║")
+    print("║ 5. Assign a Route to a Truck ║")
+    print("║ 6. View Trucks               ║")
+    print("║ 7. View Drivers              ║")
+    print("║ 8. View Routes               ║")
+    print("║ 9. Update Truck Information ║")
+    print("║ 10. Update Driver Information║")
+    print("║ 11. Delete Truck             ║")
+    print("║ 12. Delete Driver            ║")
+    print("║ 13. Delete Route             ║")
+    print("║ 14. Generate report on the   ║")
+    print("║     list of routes assigned  ║")
+    print("║     to each truck            ║")
+    print("║ 15. Exit                     ║")
+    print("╚══════════════════════════════╝")
 
 trucks = []
 drivers = []
@@ -252,5 +258,5 @@ while True:
     elif choice == '15':
         print("Exiting...")
         break
- else:
-        print("Invalid choice. Please try again.")
+else:
+    print("Invalid choice. Please try again.")
