@@ -90,10 +90,13 @@ def view_drivers():
 
 # functions for menu options 8-10
 def view_routes(routes):
-    print("Routes in the system:")
-    for route in routes:
-        truck_license = route.truck.license_plate if route.truck else "No route assigned"
-        print("Area: {}, Truck: {}".format(route.area, truck_license))
+    if not routes:
+        print("No routes registered.")
+    else:
+        print("Routes in the system:")
+        for route in routes:
+            truck_license = route.truck.license_plate if route.truck else "No route assigned"
+            print("Area: {}, Truck: {}".format(route.area, truck_license))
 
 def update_truck_information(trucks):
     license_plate = input("Enter truck's license plate number: ")
