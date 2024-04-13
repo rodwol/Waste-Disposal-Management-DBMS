@@ -22,7 +22,7 @@ This program is a Waste Disposal Management Database Management System (DBMS) im
 - Delete Driver: Enable users to delete a driver from the system, removing them and any associated truck - assignments.
 - Delete Route: Enable users to delete a route from the system, removing it and any associated truck assignments.
 - Generate Reports: Provide options for generating reports, such as the list of routes assigned to each truck.
-- Exit Application
+- Exit Application.
 
 
 ## Getting Started
