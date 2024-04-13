@@ -11,7 +11,7 @@ This program is a Waste Disposal Management Database Management System (DBMS) im
 - Add a Truck: Allow users to add a new truck to the system by providing details such as the truck's license - plate number, and type (e.g., recycling, garbage).
 - Add a Driver: Enable users to add a new driver to the system along with their details such as name and phone number.
 - Assign a Driver to a Truck: Allow users to assign a driver to a specific truck, indicating which driver is - responsible for operating it.
-- Add a Route: Enable users to add a new route to the system by specifying the area e.g. Kimironko.
+- Add a Route: Enable users to add a new route to the system by specifying the area e.g.Kimironko.
 - Assign a Route to a Truck: Allow users to assign a route to a specific truck, indicating which route the truck - will follow for waste collection or disposal.
 - View Trucks: Display a list of all trucks currently registered in the system along with their details, such as : license plate number, assigned driver, and assigned route.
 - View Drivers: Display a list of all drivers registered in the system along with their details, such as name,  phone number, and assigned truck (if any).
