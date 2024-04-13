@@ -132,6 +132,8 @@ def update_driver_information(drivers):
         print("Error: Driver not found.")
 
 #functions for menu options 11-13
+#deleting a truck
+
 def delete_truck(trucks):
     license_plate = input("Enter truck's license plate number to delete: ")
     for truck in trucks:
@@ -141,6 +143,8 @@ def delete_truck(trucks):
             return
     print("Error: Truck not found.")
 
+#deleting a driver
+
 def delete_driver(drivers):
     name = input("Enter driver's name to delete: ")
     for driver in drivers:
@@ -149,6 +153,8 @@ def delete_driver(drivers):
             print("Driver deleted successfully!")
             return
     print("Error: Driver not found.")
+
+#deleting a route
 
 def delete_route(routes):
     area = input("Enter route's area to delete: ")
@@ -233,7 +239,7 @@ while True:
 
     elif choice == '10':
         update_driver_information(drivers)
- 
+
     elif choice == '11':
         delete_truck(trucks)
 
@@ -242,10 +248,9 @@ while True:
 
     elif choice == '13':
         delete_route(routes)
-   
+
     elif choice == '15':
         print("Exiting...")
         break
-
-    else:
+ else:
         print("Invalid choice. Please try again.")
