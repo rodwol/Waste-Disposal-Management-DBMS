@@ -7,7 +7,7 @@
 ## Description
 This program is a Waste Disposal Management Database Management System (DBMS) implemented using Python. It allows the user to manage Truscks, Drivers, and Routes involved in waste management operations.
 
-## Features
+## Features.
 - Add a Truck: Allow users to add a new truck to the system by providing details such as the truck's license - plate number, and type (e.g., recycling, garbage).
 - Add a Driver: Enable users to add a new driver to the system along with their details such as name and phone number.
 - Assign a Driver to a Truck: Allow users to assign a driver to a specific truck, indicating which driver is - responsible for operating it.
