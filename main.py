@@ -164,6 +164,28 @@ def delete_route(routes):
             print("Route deleted successfully!")
             return
     print("Error: Route not found.")
+    
+#Generating a report
+def generate_route_report():
+    if not trucks:
+        print("No trucks registered.")
+        return
+
+    print("\nRoute Report:")
+    for truck in trucks:
+        if truck.route:
+            route_names = [route.area for route in routes if route.truck == truck]
+            print(f"Truck License Plate: {truck.license_plate}")
+            print(f"Truck Driver Name: {truck.driver.name if truck.driver else 'None'}")
+            print(f"Number of Routes: {len(route_names)}")
+            print("Route Names:", ", ".join(route_names))
+            print()
+        else:
+            print(f"Truck License Plate: {truck.license_plate}")
+            print(f"Truck Driver Name: {truck.driver.name if truck.driver else 'None'}")
+            print("Number of Routes: 0")
+            print("Route Names: None")
+            print()
 
 #Menu Options
 def menu():
@@ -254,6 +276,9 @@ while True:
 
     elif choice == '13':
         delete_route(routes)
+
+    elif choice == '14':
+        generate_route_report()
 
     elif choice == '15':
         print("\033[31mExiting...\033[0m")
