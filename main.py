@@ -59,26 +59,32 @@ drivers = []
 routes = []
 
 def assign_route_to_truck():
-    plate_number = input("Enter truck's license plate number for route assignment: ")
-    area = input("Enter route's area for the truck: ")
-    
-    # Search the truck and route if they are available in the system
-    truck = next((truck for truck in trucks if truck.license_plate == plate_number), None)
-    route = next((route for route in routes if route.area == area), None)
+    if trucks and routes:
+        print("Available Trucks:")
+        for i, truck in enumerate(trucks):
+            print(f"{i+1}. License Plate: {truck.license_plate}, Type: {truck.type}")
+        truck_index = int(input("Enter the index of the truck: ")) - 1
+        
+        print("Available Routes:")
+        for i, route in enumerate(routes):
+            print(f"{i+1}. Area: {route.area}")
+        route_index = int(input("Enter the index of the route: ")) - 1
+        
+        truck = trucks[truck_index]
+        route = routes[route_index]
 
-    if truck is not None and route is not None:
         truck.assign_route(route)
         route.assign_truck(truck)
         print("Route assigned successfully.")
     else:
-        print("Truck or Route not found.")
+        print("Please add trucks and routes first.")
 
 def view_trucks():
     if not trucks:
         print("No trucks registered.")
         return
     for truck in trucks:
-        print(f"License Plate: {truck.license_plate}, Type: {truck.type}, Driver: {(truck.driver.name if truck.driver else 'None')}, Route: {(truck.route.area if truck.route else 'None')}")
+        print(f"License Plate: {truck.license_plate}, Type: {truck.type}, Driver: {(truck.driver.name if truck.driver else 'None')}.")
 
 def view_drivers():
     if not drivers:
@@ -170,22 +176,27 @@ def generate_route_report():
     if not trucks:
         print("No trucks registered.")
         return
+    
+    print("\nAvailable Trucks:")
+    for i, truck in enumerate(trucks):
+        print(f"{i+1}. License Plate: {truck.license_plate}, Type: {truck.type}")
 
-    print("\nRoute Report:")
-    for truck in trucks:
-        if truck.route:
-            route_names = [route.area for route in routes if route.truck == truck]
-            print(f"Truck License Plate: {truck.license_plate}")
-            print(f"Truck Driver Name: {truck.driver.name if truck.driver else 'None'}")
-            print(f"Number of Routes: {len(route_names)}")
-            print("Route Names:", ", ".join(route_names))
-            print()
+    try:
+        truck_index = int(input("Enter the index of the truck to generate a route report: ")) - 1
+        if 0 <= truck_index < len(trucks):
+            truck = trucks[truck_index]
+            if truck.route:
+                route_names = [route.area for route in routes if route.truck == truck]
+                print(f"\nRoute Report for Truck with License Plate {truck.license_plate}:")
+                print(f"Truck Driver Name: {truck.driver.name if truck.driver else 'None'}")
+                print(f"Number of Routes: {len(route_names)}")
+                print("Route Names:", ", ".join(route_names))
+            else:
+                print(f"\nNo routes assigned to Truck with License Plate {truck.license_plate}.")
         else:
-            print(f"Truck License Plate: {truck.license_plate}")
-            print(f"Truck Driver Name: {truck.driver.name if truck.driver else 'None'}")
-            print("Number of Routes: 0")
-            print("Route Names: None")
-            print()
+            print("Invalid truck index.")
+    except ValueError:
+        print("Invalid input. Please enter a valid index.")
 
 #Menu Options
 def menu():
